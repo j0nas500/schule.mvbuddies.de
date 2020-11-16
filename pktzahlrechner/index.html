@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Benötigte Punktzahl Rechner</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/return-to-top.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Vue.JS -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <noscript><h3>  Du musst JavaScript aktiviert haben, um diese Seite verwenden zu können. Bitte 
+    aktiviere JavaScript und <a href="https://rcl.mvbuddies.de">lade die Seite neu</a>, um fortzufahren.  </h3> 
+	<meta HTTP-EQUIV="refresh" content=0;url="javascriptNotEnabled.html"></noscript>
+</head>
+<body>
+<div class="container" id="app"><br><br><br>
+
+	<h4> Gesamtpunktzahl eingeben:</h4>
+        <table id='worksheet_table' class="table table-striped">
+            <thead>
+              <tr>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="punkte" id="punkte" class="form-control" v-model="punktzahl"></td>
+              </tr>
+            </tbody>
+          </table>
+  <br>
+    <div class="toc"><p><a href="#sonstNoten">Zu den sonstigen Noten</a><br><a href="#klausNoten">Zu den Klausur Noten</a></p></div>
+  <div class="row">
+	<div class="col-sm-6">
+  <h4 id="sonstNoten"> sonstige Noten </h4>
+          <table id='worksheet_table' class="table table-striped">
+            <thead>
+              <tr>
+				<th>Notenpunkte</th>
+				<th>Punktzahl</th>		
+              </tr>
+            </thead>
+            <tbody>
+				<tr v-for="(sonstNote, index) in sonstNotenRechner">
+					<td>{{ 15 - index }}</td>
+					<td>{{ sonstNote }}</td>
+				</tr>
+            </tbody>
+          </table>
+		  
+		  <br><br></div>
+		  <div class="col-sm-6">
+  <h4 id="klausNoten"> Klausur Noten </h4>
+          <table id='worksheet_table' class="table table-striped">
+            <thead>
+              <tr>
+                <th>Notenpunkte</th>
+                <th>Punktzahl</th>			
+              </tr>
+            </thead>
+            <tbody>
+				<tr v-for="(klausurNote, index) in klausurNotenRechner">
+					<td>{{ 15 - index }}</td>
+					<td>{{ klausurNote }}</td>
+				</tr>
+            </tbody>
+          </table>
+		  <br><br><br></div></div>
+		  <h4> Rechenweg </h4>
+		  <p> Hier die Rechnung zur Nachvollziehung: <code> gesamtpunktzahl * prozent / 100 </code>
+		  <table id='worksheet_table' class="table table-striped">
+            <thead>
+              <tr>
+				<th>Notenpunkte</th>
+                <th>sonstige Noten</th>
+                <th>Klausur Noten</th>				
+              </tr>
+			</thead>
+			<tbody>
+				<tr v-for="(punktzahl, index) in umrechnungSonstNoten">
+					<td>{{ 15 - index }}</td>
+					<td>{{ punktzahl }}%</td>
+					<td>{{ umrechnungKlausurNoten[index] }}%</td>
+				</tr>
+			</tbody>		  
+        </table>
+    
+   
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+
+<!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    </div>
+		  <script src="js/index.js"></script>
+      <script src="js/return-to-top.js"></script>     
+      
+</body>
+</html>
